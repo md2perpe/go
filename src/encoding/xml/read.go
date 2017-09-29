@@ -614,7 +614,7 @@ func copyValue(dst reflect.Value, src []byte) (err error) {
 			dst.SetInt(0)
 			return nil
 		}
-		itmp, err := strconv.ParseInt(string(src), 10, dst.Type().Bits())
+		itmp, err := strconv.ParseInt(strings.TrimSpace(string(src)), 10, dst.Type().Bits())
 		if err != nil {
 			return err
 		}
@@ -624,7 +624,7 @@ func copyValue(dst reflect.Value, src []byte) (err error) {
 			dst.SetUint(0)
 			return nil
 		}
-		utmp, err := strconv.ParseUint(string(src), 10, dst.Type().Bits())
+		utmp, err := strconv.ParseUint(strings.TrimSpace(string(src)), 10, dst.Type().Bits())
 		if err != nil {
 			return err
 		}
@@ -634,7 +634,7 @@ func copyValue(dst reflect.Value, src []byte) (err error) {
 			dst.SetFloat(0)
 			return nil
 		}
-		ftmp, err := strconv.ParseFloat(string(src), dst.Type().Bits())
+		ftmp, err := strconv.ParseFloat(strings.TrimSpace(string(src)), dst.Type().Bits())
 		if err != nil {
 			return err
 		}
